@@ -80,3 +80,48 @@
             z-index: 10;
             transition: transform 0.2s;
         }
+
+        .btn-main:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="arrow-up">↑</div>
+    <div id="txt-up" class="instruction-up">Нажмите на 3 точки</div>
+
+    <a href="https://serag.top/click?o=2&a=10325" class="btn-main" id="btn-text">ПЕРЕЙТИ</a>
+
+    <div class="arrow-down">↓</div>
+    <div id="txt-down" class="instruction-down">Нажмите "Открыть в браузере"</div>
+
+    <script>
+        // Список переводов
+        const translations = {
+            'en': { up: 'Tap on the three dots', down: 'Tap "Open in browser"', btn: 'CONTINUE' },
+            'es': { up: 'Toca los tres puntos', down: 'Toca "Abrir en el navegador"', btn: 'CONTINUAR' },
+            'ru': { up: 'Нажмите на 3 точки', down: 'Нажмите "Открыть в браузере"', btn: 'ПЕРЕЙТИ' },
+            'de': { up: 'Auf drei Punkte tippen', down: 'In Browser öffnen', btn: 'WEITER' },
+            'fr': { up: 'Appuyez sur les 3 points', down: 'Ouvrir dans le navigateur', btn: 'CONTINUER' },
+            'pt': { up: 'Toque nos 3 pontos', down: 'Abrir no navegador', btn: 'CONTINUAR' }
+        };
+
+        // Определяем язык браузера
+        const userLang = (navigator.language || navigator.userLanguage).substring(0, 2);
+        const content = translations[userLang] || translations['en'];
+
+        // Применяем перевод
+        document.getElementById('txt-up').innerText = content.up;
+        document.getElementById('txt-down').innerText = content.down;
+        document.getElementById('btn-text').innerText = content.btn;
+    </script>
+
+</body>
+</html>
